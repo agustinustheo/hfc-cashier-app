@@ -57,7 +57,8 @@ namespace POS
             {
                 MessageBox.Show("Password is not the same!");
             }
-
+            textBox5.Text = "";
+            textBox7.Text = "";
         }
 
         private void Form8_Load(object sender, EventArgs e)

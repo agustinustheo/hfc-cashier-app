@@ -65,5 +65,38 @@ namespace POS
         {
             this.Close();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form9 addCategory = new Form9();
+            addCategory.Show();
+            this.Hide();
+            addCategory.FormClosing += AddCategory_Closing;
+        }
+        private void AddCategory_Closing(object sender, FormClosingEventArgs e)
+        {
+            Dictionary<string, string> items = new Dictionary<string, string>();
+
+            using (SqlConnection connection = new SqlConnection(connString))
+            using (SqlCommand command = new SqlCommand("", connection))
+            {
+                connection.Open();
+                command.CommandText = "SELECT IDCategory, categoryName FROM trItemCategory";
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows == true)
+                {
+                    while (reader.Read())
+                    {
+                        items.Add(reader.GetInt32(0).ToString(), reader.GetString(1).ToString());
+                    }
+                }
+                command.Parameters.Clear();
+                connection.Close();
+            }
+            comboBox1.DataSource = new BindingSource(items, null);
+            comboBox1.DisplayMember = "Value";
+            comboBox1.ValueMember = "Key";
+            this.Show();
+        }
     }
 }
