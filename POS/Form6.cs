@@ -60,5 +60,10 @@ namespace POS
             comboBox1.DisplayMember = "Value";
             comboBox1.ValueMember = "Key";
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

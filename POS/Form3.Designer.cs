@@ -90,7 +90,6 @@
             this.tbox2.Name = "tbox2";
             this.tbox2.Size = new System.Drawing.Size(295, 26);
             this.tbox2.TabIndex = 38;
-            this.tbox2.UseSystemPasswordChar = true;
             // 
             // label10
             // 
@@ -165,6 +164,7 @@
             this.tbox3.Name = "tbox3";
             this.tbox3.Size = new System.Drawing.Size(295, 26);
             this.tbox3.TabIndex = 30;
+            this.tbox3.UseSystemPasswordChar = true;
             // 
             // tbox8
             // 
@@ -173,6 +173,7 @@
             this.tbox8.Name = "tbox8";
             this.tbox8.Size = new System.Drawing.Size(295, 26);
             this.tbox8.TabIndex = 29;
+            this.tbox8.UseSystemPasswordChar = true;
             // 
             // label3
             // 
