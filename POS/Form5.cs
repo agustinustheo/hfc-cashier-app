@@ -46,5 +46,29 @@ namespace POS
         {
             this.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form6 addMenu = new Form6();
+            addMenu.Show();
+            this.Hide();
+            addMenu.FormClosing += AddMenu_Closing;
+        }
+        private void AddMenu_Closing(object sender, FormClosingEventArgs e)
+        {
+            this.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Form7 showProfile = new Form7();
+            showProfile.Show();
+            this.Hide();
+            showProfile.FormClosing += ShowProfile_Closing;
+        }
+        private void ShowProfile_Closing(object sender, FormClosingEventArgs e)
+        {
+            this.Show();
+        }
     }
 }

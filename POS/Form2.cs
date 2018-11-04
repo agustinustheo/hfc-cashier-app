@@ -8,7 +8,7 @@ namespace POS
 {
     public partial class Form2 : Form
     {
-        public string connString = "Data Source=IT-AM\\SQLEXPRESS;Initial Catalog=HFC_DB;Integrated Security=True";
+        public string connString = System.Configuration.ConfigurationManager.ConnectionStrings["HFCDB"].ConnectionString.ToString();
         public Form2()
         {
             InitializeComponent();
@@ -125,6 +125,11 @@ namespace POS
             }
 
             MessageBox.Show("Order Succesfully Recorded! Total Price = Rp " + label2.Text);
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

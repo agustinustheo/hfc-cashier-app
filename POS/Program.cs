@@ -20,5 +20,6 @@ namespace POS
     {
         public static int IDUser;
         public static string UserName;
+        public static string CheckInTime;
     }
 }

@@ -6,7 +6,7 @@ namespace POS
 {
     public partial class Form1 : Form
     {
-        public string connString = "Data Source=IT-AM\\SQLEXPRESS;Initial Catalog=HFC_DB;Integrated Security=True";
+        public string connString = System.Configuration.ConfigurationManager.ConnectionStrings["HFCDB"].ConnectionString.ToString();
         public Form1()
         {
             InitializeComponent();
@@ -18,7 +18,7 @@ namespace POS
             using (SqlCommand command = new SqlCommand("", connection))
             {
                 connection.Open();
-                command.CommandText = "SELECT IDUser FROM msUser WHERE Username = @username AND Password = @password";
+                command.CommandText = "SELECT IDUser, Username FROM msUser WHERE Username = @username AND Password = @password";
                 command.Parameters.AddWithValue("@username", textBox1.Text);
                 command.Parameters.AddWithValue("@password", textBox2.Text);
                 SqlDataReader reader = command.ExecuteReader();
@@ -27,8 +27,11 @@ namespace POS
                     while (reader.Read())
                     {
                         LoginInfo.IDUser = reader.GetInt32(0);
+                        LoginInfo.UserName = reader.GetString(1);
                     }
                     connection.Close();
+
+                    LoginInfo.CheckInTime = DateTime.Now.ToString("h:mm:ss");
                     Form5 dashboard = new Form5();
                     dashboard.Show();
                     this.Hide();
@@ -36,6 +39,7 @@ namespace POS
                 }
                 else
                 {
+                    MessageBox.Show("User not found");
                     connection.Close();
                 }
             }
